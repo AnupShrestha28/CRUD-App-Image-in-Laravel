@@ -14,22 +14,37 @@
                 <h2>Welcome to Register Page</h2>
             </div>
 
-            <form action="{{url('user-login')}}" method="post">
+            <form action="{{url('user-register')}}" method="post">
                 @csrf
 
                 <div class="mb-3">
                     <label class="form-label">Name</label>
-                    <input type="name" name="name" class="form-control" placeholder="Enter name">
+                    <input type="name" name="name" class="form-control" placeholder="Enter name" value="{{old('name')}}">
+                    @error('name')
+                        <div class="alert alert-danger" role="alert">
+                            {{$message}}
+                        </div>
+                    @enderror
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label">Email Address</label>
-                    <input type="email" name="email" class="form-control" placeholder="Enter email">
+                    <input type="email" name="email" class="form-control" placeholder="Enter email" value="{{old('email')}}">
+                    @error('email')
+                    <div class="alert alert-danger" role="alert">
+                        {{$message}}
+                    </div>
+                @enderror
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label">Password</label>
-                    <input type="password" name="password" class="form-control" placeholder="Enter password">
+                    <input type="password" name="password" class="form-control" placeholder="Enter password" value="{{old('password')}}">
+                    @error('password')
+                    <div class="alert alert-danger" role="alert">
+                        {{$message}}
+                    </div>
+                @enderror
                 </div>
 
                 <p>Already have an account ? <a href="{{url('login')}}">Login Now</a></p>

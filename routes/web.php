@@ -30,3 +30,5 @@ Route::get('delete-product/{id}', [ProductController::class, 'deleteProduct']);
 Route::get('login', [AuthController::class, 'login']);
 
 Route::get('register', [AuthController::class, 'register']);
+
+Route::post('user-register', [AuthController::class, 'userRegister']);

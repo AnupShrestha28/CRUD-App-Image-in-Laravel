@@ -14,6 +14,12 @@
                 <h2>Welcome to Login Page</h2>
             </div>
 
+            @if(Session::has('success'))
+                <div class="alert alert-success" role="alert">
+                    {{Session::get('success')}}
+                </div>
+            @endif
+
             <form action="{{url('user-login')}}" method="post">
                 @csrf
                 <div class="mb-3">
