@@ -20,6 +20,13 @@
                 </div>
             @endif
 
+            
+            @if(Session::has('fail'))
+                <div class="alert alert-danger" role="alert">
+                    {{Session::get('fail')}}
+                </div>
+            @endif
+
             <form action="{{url('user-login')}}" method="post">
                 @csrf
                 <div class="mb-3">
