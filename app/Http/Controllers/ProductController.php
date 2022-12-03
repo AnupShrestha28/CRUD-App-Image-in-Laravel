@@ -45,4 +45,39 @@ class ProductController extends Controller
 
         return redirect('/product-list')->with('success', 'New Product added successfully');
     }
+
+    public function editProduct($id){
+        $data = Product::where('id', '=', $id)->first();
+
+        return view('edit-product', compact('data'));
+    }
+
+    public function updateProduct(Request $request){
+        // validating the form
+        $request->validate([
+            'name' => 'required',
+            'price' => 'required',
+            'description' => 'required',
+        ]);
+
+        $id = $request->id;
+        $prodname = $request->name;
+        $prodprice = $request->price;
+        $proddesp = $request->description;
+
+        Product::where('id', '=', $id)->update([
+            'prodname' => $prodname,
+            'prodprice' =>$prodprice,
+            'proddesp' => $proddesp
+        ]);
+
+        return redirect('/product-list')->with('success', 'Product Edited Successfully');
+
+    }
+
+    public function deleteProduct($id){
+        Product::where('id', '=', $id)->delete();
+
+        return redirect('/product-list')->with('success','Product Deleted Successfully');
+    }
 }

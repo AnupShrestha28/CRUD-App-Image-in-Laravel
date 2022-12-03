@@ -48,7 +48,7 @@
                         <td class="pt-4">{{$products->prodprice}}</td>
                         <td class="pt-4">{{$products->proddesp}}</td>
                         <td><img src="images/{{$products->prodimage}}" style="width:100px; height:100px;" alt=""></td>
-                        <td class="pt-4"><a href="" class="btn btn-primary rounded-pill">Edit</a> <a href="" class="btn btn-danger rounded-pill">Delete</a></td>
+                        <td class="pt-4"><a href="{{url('edit-product/'.$products->id)}}" class="btn btn-primary rounded-pill">Edit</a> <a href="{{url('delete-product/'.$products->id)}}" class="btn btn-danger rounded-pill">Delete</a></td>
                     </tr>
                     @endforeach
                 </tbody>
