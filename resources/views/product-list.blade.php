@@ -14,11 +14,29 @@
                 <h2>Product Listing Application</h2>
             </div>
 
+            @auth
+                <a href="{{url('login')}}" style="font-weight: bold;" class="p-2 nav-link">{{auth()->user()->name}}</a>
+            @endauth
+
+
+
+            <form action="{{url('logout')}}" method="get">
+                <button type="submit" class="btn btn-primary rounded-pill">Logout</button>
+            </form>
+           
+
+            @guest
+                <div>
+                    <a href="{{url('login')}}" class="btn btn-primary rounded-pill">Login</a>
+                    <a href="{{url('register')}}" class="btn btn-secondary rounded-pill">Register</a>
+                </div>
+            @endguest
+
+           
             <div style="margin-bottom:20px;">
                 <a href="{{url('add-product')}}" class="btn btn-outline-primary rounded-pill;" style="margin-top: 15px;">Add Product</a>
             </div>
 
-           
             @if(Session::has('success'))
                 <div class="alert alert-success" role="alert">
                     {{Session::get('success')}}
