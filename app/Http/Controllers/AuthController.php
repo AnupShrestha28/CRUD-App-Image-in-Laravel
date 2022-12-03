@@ -46,4 +46,10 @@ class AuthController extends Controller
 
         return redirect('/login')->with('success', 'Registered Successfully');
     }
+
+    public function logout(){
+        auth()->logout();
+
+        return redirect('/login');
+    }
 }

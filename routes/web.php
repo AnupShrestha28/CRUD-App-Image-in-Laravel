@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('product-list', [ProductController::class, 'productList']);
+Route::get('product-list', [ProductController::class, 'productList'])->middleware('auth');
 
 Route::get('add-product', [ProductController::class, 'addProduct']);
 
@@ -27,10 +28,12 @@ Route::post('update-product', [ProductController::class, 'updateProduct']);
 
 Route::get('delete-product/{id}', [ProductController::class, 'deleteProduct']);
 
-Route::get('login', [AuthController::class, 'login']);
+Route::get('login', [AuthController::class, 'login'])->name('login');
 
-Route::post('user-login', [AuthController::class, 'userLogin']);
+Route::post('user-login', [AuthController::class, 'userLogin'])->name('userLogin');
 
-Route::get('register', [AuthController::class, 'register']);
+Route::get('register', [AuthController::class, 'register'])->name('register');
 
-Route::post('user-register', [AuthController::class, 'userRegister']);
+Route::post('user-register', [AuthController::class, 'userRegister'])->name('userRegister');
+
+Route::get('logout', [AuthController::class, 'logout'])->name('logout');
