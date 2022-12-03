@@ -16,6 +16,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+Route::get('/', function(){
+    return view('login');
+});
+
 Route::get('product-list', [ProductController::class, 'productList'])->middleware('auth');
 
 Route::get('add-product', [ProductController::class, 'addProduct']);
