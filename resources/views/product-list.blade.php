@@ -12,10 +12,11 @@
         <div class="row">
             <div class="col-md-12">
                 <h2>Product Listing Application</h2>
+                <h3>Welcome</h3>
             </div>
 
             @auth
-                <a href="{{url('login')}}" style="font-weight: bold;" class="p-2 nav-link">{{auth()->user()->name}}</a>
+                <a href="{{url('login')}}" style="font-weight: bold; " class="p-2 nav-link">{{auth()->user()->name}}</a>
             @endauth
 
 
