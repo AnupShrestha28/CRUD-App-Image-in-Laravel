@@ -15,7 +15,7 @@
                 <h2 class="fw-bold">Edit Product</h2>
             </div>
 
-            <form action="{{url('update-product')}}" method="post">
+            <form action="{{url('update-product')}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <input type="hidden" name="id" value="{{$data->id}}">
                 <div class="mb-3">
@@ -42,6 +42,16 @@
                     <label class="form-label">Product Description</label>
                     <textarea name="description" class="form-control" placeholder="Enter Product description">{{$data->proddesp}}</textarea>
                     @error('description')
+                        <div class="alert alert-danger" role="alert">
+                            {{$message}}
+                        </div>
+                    @enderror
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Product Image</label>
+                    <input type="file" name="image" class="form-control" value="{{$data->prodimage}}">
+                    @error('image')
                         <div class="alert alert-danger" role="alert">
                             {{$message}}
                         </div>

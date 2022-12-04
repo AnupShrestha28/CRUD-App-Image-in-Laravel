@@ -64,11 +64,15 @@ class ProductController extends Controller
         $prodname = $request->name;
         $prodprice = $request->price;
         $proddesp = $request->description;
+        $prodimage = $request->file('image')->getClientOriginalName();
+
+        $request->image->move(public_path('images'), $prodimage);
 
         Product::where('id', '=', $id)->update([
             'prodname' => $prodname,
             'prodprice' =>$prodprice,
-            'proddesp' => $proddesp
+            'proddesp' => $proddesp,
+            'prodimage' => $prodimage
         ]);
 
         return redirect('/product-list')->with('success', 'Product Edited Successfully');
